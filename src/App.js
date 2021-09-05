@@ -13,7 +13,7 @@ function App() {
   
   let fetchTaskList = async () => {
     try {
-      let todo = await axios.get("http://localhost:3000/list-all-todo");
+      let todo = await axios.get("https://fyz-todo-app.herokuapp.com/list-all-todo");
       console.log(todo);
       setTodo([...todo.data]);
        setTask('')
@@ -25,7 +25,7 @@ function App() {
 
   let handleCreateTask= async() =>{
    try {
-       let postData= await axios.post('http://localhost:3000/create-task',{messege:task})
+       let postData= await axios.post('https://fyz-todo-app.herokuapp.com/create-task',{messege:task})
       fetchTaskList()
    } catch (error) {
      alert(error)
@@ -34,7 +34,7 @@ function App() {
 
   let handleChange = async(e,id) => {
     try {
-      let updateData= await axios.put(`http://localhost:3000/update-task/${id}`,{status:e.target.checked})
+      let updateData= await axios.put(`https://fyz-todo-app.herokuapp.com/update-task/${id}`,{status:e.target.checked})
       fetchTaskList()
     } catch (error) {
       alert(error)
@@ -43,7 +43,7 @@ function App() {
 
   let handleDelete = async(id) =>{
     try {
-      let deleteData= await axios.delete(`http://localhost:3000/delete-task/${id}`)
+      let deleteData= await axios.delete(`https://fyz-todo-app.herokuapp.com/delete-task/${id}`)
       fetchTaskList()
     } catch (error) {
       alert(error)
